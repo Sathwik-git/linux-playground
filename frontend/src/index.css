@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --muted: 240 4.8% 95.9%;
+    --border: 240 5.9% 90%;
+    --color-1: 345 100% 47%;
+    --color-2: 28 100% 49%;
+    --color-3: 160 100% 47%;
+    --color-4: 190 100% 47%;
+    --color-5: 270 100% 47%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --border: 240 3.7% 15.9%;
+  }
+
+  html {
+    @apply bg-terminal-dark text-gray-100 scroll-smooth dark;
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-terminal-dark;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white 
+           focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-terminal-gray bg-opacity-20 hover:bg-opacity-30 text-white 
+           focus:ring-terminal-gray;
+  }
+
+  .btn-danger {
+    @apply btn bg-terminal-red hover:bg-red-700 text-white 
+           focus:ring-terminal-red;
+  }
+
+  .card {
+    @apply bg-terminal-darker rounded-lg shadow-lg p-4 border border-gray-800;
+  }
+
+  .glass-card {
+    @apply bg-terminal-darker bg-opacity-80 backdrop-blur-md rounded-lg 
+           shadow-lg p-4 border border-gray-800;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .status-badge-connected {
+    @apply status-badge bg-green-900 text-green-300;
+  }
+
+  .status-badge-disconnected {
+    @apply status-badge bg-red-900 text-red-300;
+  }
+
+  .status-badge-warning {
+    @apply status-badge bg-yellow-900 text-yellow-300;
+  }
+}
+
+.terminal-container {
+  @apply bg-terminal-black rounded-md border border-gray-800 overflow-hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.animate-typing {
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #4299e1 }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-rainbow {
+  animation: rainbow 4s linear infinite;
+}
